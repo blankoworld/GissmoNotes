@@ -7,4 +7,16 @@ Created mardi 30 août 2016
 
 ===== Description =====
 
-Ce recueil de notes rassemble les informations au sujet du fonctionnement de l'application Gissmo (Cf. https://github.com/eost/gissmo/).
+Ce recueil de notes rassemble les informations au sujet du fonctionnement de l'application Gissmo (Cf. https://github.com/eost/gissmo/) ainsi que les recherches effectuées autour du projet.
+
+===== Gissmo 2.0 =====
+
+Ce que nous aimerions obtenir :
+
+* Back-end postgreSQL
+* Trigger sur postgreSQL pour générer l'historique des objets + crée des interventions (clustering)
+* Script de clustering lancé régulièrement pour regrouper les modifications par intervention
+* API à l'aide de Django + django-rest-framework
+* Front-end HTML5 + CSS3 + JS
+
+Il s'agit donc de lier l'ensemble de ces éléments afin de fournir une expérience utilisateur agréable, un environnement de développement facile et créer un logiciel Open Source digne de ce nom.
