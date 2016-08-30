@@ -2,7 +2,7 @@ Content-Type: text/x-zim-wiki
 Wiki-Format: zim 0.4
 Creation-Date: 2016-08-30T11:38:11+02:00
 
-====== Trigger ======
+====== Trigger 2.0 ======
 Created mardi 30 août 2016
 
 ===== But =====

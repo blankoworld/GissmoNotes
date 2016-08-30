@@ -1,0 +1,126 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-30T14:21:36+02:00
+
+====== Backend 2.0 ======
+Created mardi 30 août 2016
+
+Ce que nous attendons du Backend de la version 2.0.
+
+===== Schéma =====
+
+Ci dessous le schéma de la version 2.0 alpha 5 : 
+
+
+{{./GISSMO-v2.0-alpha5.png}}
+
+===== Modules Django =====
+
+En découpant le schéma et en regroupant les objets on obtient les modules suivants : 
+
+* affiliation
+	* agency (affiliation_agency)
+* document
+	* type (document_type)
+	* document (document_document)
+* equipment
+	* state (equipment_state)
+	* type (equipment_type)
+	* model (equipment_model)
+	* forbiddenequipmentmodel (equipment_forbiddenequipmentmodel)
+	* parameter (equipment_parameter)
+	* value (equipment_value)
+	* configuration (equipment_configuration)
+	* service (equipment_service)
+	* ipaddress (equipment_ipaddress)
+* intervention
+	* intervention (intervention_intervention)
+	* protagonist (intervention_protagonist)
+	* operator (intervention_operator)
+* network
+	* station (network_station)
+	* built (network_built)
+	* network (network_network)
+	* installation (network_installation)
+	* datatype (network_datatype)
+	* channel (network_channel)
+* place
+	* state (place_state)
+	* groundtype (place_groundtype)
+	* place (place_place)
+	* placeoperator (place_placeoperator)
+	* placedocument (place_placedocument)
+* project
+	* project (project_project)
+
+Ce qui donne les dépendances de module suivantes : 
+
+* affiliation dépend de : 
+	* django.contrib.auth pour les User
+* document dépend de :
+	* django.contrib.auth pour les Owner
+* place dépend de : 
+	* affiliation pour PlaceOperator
+* project dépend de : 
+	* place
+	* django.contrib.auth
+* equipment dépend de : 
+	* place
+	* django.contrib.auth
+* network dépend de : 
+	* equipment
+	* place
+* intervention dépend de : 
+	* place
+
+===== Explications =====
+
+* Les principaux objets : 
+	* Place
+	* Equipment
+	* Installation
+	* Channel
+* Les « Project » sont simplement un « Group » auquel on a rajouté un manager
+* Les « Agency » sont des organismes comme une société, un observatoire, etc.
+* Une « Place » est un endroit exact tel qu'un endroit de stockage
+* Pour avoir les lieux connus de l'EOST (observatoire), il suffit d'afficher les « Place » étant liées à l'EOST
+
+Généralement on procède de la manière suivante : 
+
+* On ajoute des utilisateurs
+* On ajoute des projets
+* On ajoute ces utilisateurs aux projets
+* On cherche un endroit pour une station et on note ce lieu dans Place
+* On commande un équipement chez un fabricant particulier. On crée donc un type, un model, puis un équipement
+* On reçoit l'équipement et on entre ses informations dans « Configuration »
+* On place cet équipement sur une station à l'aide de l'objet « Installation »
+
+Une fois les enregistrements effectués, au moindre changement un [[../Trigger_2.0.txt|Trigger]] est lancé pour générer une Intervention.
+
+L'utilisateur va sur l'intervention et : 
+
+* ajoute des utilisateurs à l'intervention
+* ajoute des opérateurs (Agency) à l'intervention
+* valide l'intervention
+
+===== Transitions =====
+
+Avant la 2.0, on s'occupait de gérer des actions et des états. Ceci pour StationSite et Equipment.
+
+Pour éviter une redondance de l'information, et faciliter la saisie et la compréhension par l'utilisateur, il est plus opportun d'utiliser seulement le nom des états. Et de permettre le passage d'un état à un autre suivant une liste de compatibilité.
+
+Par exemple sur le schéma suivant, quand on est "Available", on peut aller en l'état "Testing", "Ready" ou "Closed".
+
+L'implémentation à faire, selon moi est de pouvoir faire une liste des états "compatibles". Et de n'afficher que ceux là dans l'interface de saisie.
+
+==== État des Place ====
+
+Voici le schéma des états d'un lieu donné : 
+
+{{./etat_place.png}}
+
+==== État des équipements ====
+
+Voici le schéma des états d'un équipement - validé avec Maxime : 
+
+{{./etat_equipement.png}}
