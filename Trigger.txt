@@ -1,0 +1,40 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-30T11:38:11+02:00
+
+====== Trigger ======
+Created mardi 30 août 2016
+
+===== But =====
+
+* garder un historique des modifications de chaque objet de la base
+* regrouper certaines modifications (clustering) afin d'en créer une à plusieurs interventions
+
+===== Idée =====
+
+Tables : 
+
+* equipment_equipment
+* equipment_equipment_history
+* intervention_intervention
+
+À l'UPDATE d'un equipment_equipment => copie des données de l'ancienne ligne sur equipment_equipment_history.
+
+À l'INSERT d'un equipment_equipment_history => création d'une intervention OU utilisation d'une existante + mémorisation de l'ID dans le champ intervention_id
+
+===== Objets concernés =====
+
+* equipment_equipment
+* network_place
+* network_installation
+
+===== Clustering =====
+
+Ainsi le « clustering », c'est à dire de regrouper les modifications pour les lier à une seule et même intervention se ferait sur les critères suivants : 
+
+* date
+* lieu (place_id)
+
+Donc pour CHAQUE ligne de modification (table _history), SI une intervention avec la même date et le même lieu existe, on crée un LIEN entre l'intervention trouvée et la modification (table _history).
+
+SINON, on crée une nouvelle intervention et on fait le LIEN entre la nouvelle intervention et la modification (table _history).
