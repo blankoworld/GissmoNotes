@@ -13,10 +13,14 @@ Ce recueil de notes rassemble les informations au sujet du fonctionnement de l'a
 
 Ce que nous aimerions obtenir :
 
-* Back-end postgreSQL
-* Trigger sur postgreSQL pour générer l'historique des objets + crée des interventions (clustering)
-* Script de clustering lancé régulièrement pour regrouper les modifications par intervention
-* API à l'aide de Django + django-rest-framework
-* Front-end HTML5 + CSS3 + JS
+* [[../Backend_2.0.txt|Back-end postgreSQL]]
+* [[../Trigger_2.0.txt|Trigger sur postgreSQL]] pour générer l'historique des objets + crée des interventions ([[../Clustering_2.0.txt|clustering]])
+* Script de [[../Clustering_2.0.txt|clustering]] lancé régulièrement pour regrouper les modifications par intervention
+* [[../API_2.0.txt|API]] à l'aide de Django + django-rest-framework
+* [[../Frontend_2.0.txt|Front-end]] HTML5 + CSS3 + JS
 
 Il s'agit donc de lier l'ensemble de ces éléments afin de fournir une expérience utilisateur agréable, un environnement de développement facile et créer un logiciel Open Source digne de ce nom.
+
+===== Migration vers Gissmo 2.0 =====
+
+Il faut planifier la [[../Migration_2.0.txt|Migration vers Gissmo 2.0]].

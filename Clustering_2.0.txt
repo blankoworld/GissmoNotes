@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-08-30T15:22:02+02:00
+
+====== Clustering 2.0 ======
+Created mardi 30 août 2016
+
+Ou comment nous procéderons pour réunir les modifications effectuées en plusieurs interventions.
+
+===== Principe =====
+
+Notre clustering sera fait sur peu de critères : 
+
+* la date
+* le lieu d'intervention
+
+Grâce à ces critères il s'agira de créer des interventions et de lier les modifications effectuées à ces interventions.
+
+===== Déclencheurs =====
+
+Le clustering devrait se lancer à 2 moments particuliers : 
+
+* lors de l'insertion d'une ligne (à l'aide d'un trigger) dans l'une des tables suivantes : 
+	* equipment_equipment_history
+	* place_place_history
+	* network_installation_history
+* régulièrement à l'aide d'une tâche CRON/systemd (toutes les heures ? tous les jours ?)
+
+===== Algorithme =====
+
+On ne peut pas vraiment appeler ça un algorithme, mais cela s'en rapproche : 
+
+1. récupération du lieu et de la date de la modification ciblée
+2. recherche d'une intervention avec ces deux critères : 
+	a. l'intervention existe : on passe à la suite
+	b. l'intervention MANQUE : on crée l'intervention
+3. on fait un lien entre l'intervention récupérée/créée et la modification ciblée
