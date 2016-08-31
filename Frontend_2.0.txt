@@ -5,10 +5,94 @@ Creation-Date: 2016-08-30T16:14:21+02:00
 ====== Frontend 2.0 ======
 Created mardi 30 août 2016
 
+Rien n'a encore été décidé sur les possibilités offertes pour effectuer le Frontend à savoir : 
+
+* soit on utilise Django comme simple API, et on fait une application unique comme Frontend qui viendra se connecter à l'API Django
+* ou on utilise Django également pour l'application Web et à ce moment là l'API ne servirait qu'à d'autres programmes
+* ou on utilise une application Javascript/Electron pour faire une application Desktop, mais aussi Web afin de proposer quelque chose d'utilisable par smartphone/tablette
+
+Il faut savoir qu'en utilisant Javascript, on peut très bien créer une application unique. Utilisable ensuite (via Electron par exemple) en Desktop sur Mac, Linux et Windows. Et visible depuis un smartphone et/ou une tablette.
+
 ===== Recherche d'un outil JS =====
 
-* AngularJS
-* EmberJS
-* ReactJS
+En naviguant sur le Web j'ai pu trouver divers outils recommandés pour créer des applications Javascript (JS) : 
 
-TODO: Faire un comparatif
+* Angular JS
+* Ember.js
+* React (fait par Google)
+* ELM (langage fonctionnel)
+
+Quelques liens de lecture : 
+
+* https://www.codementor.io/reactjs/tutorial/react-vs-angularjs
+* https://medium.freecodecamp.com/angular-2-versus-react-there-will-be-blood-66595faafd51#.ifvxlay59
+* https://prezi.com/y4uxi_wq4nzk/angular2-vs-react/
+* http://smashingboxes.com/blog/choosing-a-front-end-framework-angular-ember-react
+* http://www.rkblog.rk.edu.pl/w/p/example-emberjs-django-django-rest-framework-single-page-application/
+
+===== Angular JS =====
+
+Avantages : 
+
+* très connu et très grosse communauté => plus de chance de trouver de l'aide et des tutoriels
+* plutôt sous la forme d'un framework, donc contient l'ensemble des outils nécessaires à la création d'une application entière
+* documenté
+
+Inconvénients : 
+
+* est souvent considéré comme « magique » sans comprendre comment modifier pour adapter
+* non modulable => à prendre tel quel ou à laisser
+* assez controversé sur la manière de fonctionner. "C'est la mauvaise façon". Mais depuis la version 2, ça semble s'améliorer apparemment.
+* pas facile à débugger car les messages d'erreurs ne sont pas parlant
+
+===== Ember.js =====
+
+Liens : 
+
+* https://guides.emberjs.com/v2.7.0/
+
+Avantages : 
+
+* documenté pour CHAQUE version
+* propose des versions LTS et donc pas mal de documentation sur la manière de migrer d'une version à l'autre
+* peut s'embarquer assez facilement dans une application
+* bonne séparation du HTML et du JS
+* utilisation des composants : éléments réutilisables pour une interface
+
+Inconvénients : 
+
+* communauté moyenne, donc aide probablement plus difficile à trouver si on a des besoins spécifiques
+
+===== React =====
+
+Avantages : 
+
+* très connu et très grosse communauté => plus de chance de trouver de l'aide et des tutoriels
+* modulable => permet de choisir chacun des composants de notre application. Et d'en changer si besoin
+
+Inconvénients : 
+
+* tellement modulable qu'on ne sait pas quels outils choisir… => demande donc une bonne connaissance de l'environnement Javascript
+* mélange le HTML et le Javascript => difficile à maintenir
+
+===== ELM =====
+
+Liens : 
+
+* http://elm-lang.org/examples
+* http://elm-lang.org/docs
+* http://debug.elm-lang.org/edit/Mario.elm
+
+Avantages : 
+
+* facile à débugger, avec des messages de bug parlants
+* jeu d'outils livrés avec ELM
+* documentation avec exemples
+* léger
+* fonctionne avec les "états" des objets, ce qui permet de garder un historique de l'interface et de se balader facilement dedans
+* propose une "manière" de créer des applications Web, à utiliser même sur d'autres projets Javascript n'utilisant pas ELM (ce qui est assez révélateur d'une bonne pratique)
+
+Inconvénients : 
+
+* langage fonctionnel => peut probablement très fortement dérouter au départ
+* peu connu et peu utilisé => difficulté probable de trouver de l'aide et des tutoriels. Bien que la documentation et les exemples sont très parlants et bien présents !
