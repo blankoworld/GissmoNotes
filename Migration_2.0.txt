@@ -5,3 +5,270 @@ Creation-Date: 2016-08-30T16:13:17+02:00
 ====== Migration 2.0 ======
 Created mardi 30 août 2016
 
+Comme la plupart des objets ont été remaniés et que nous avons des notions différentes dans la version 2.0, il faut définir des règles de migration pour les objets.
+
+En voici quelques unes - que je complèterai au fur et à mesure.
+
+===== Table à supprimer =====
+
+* auth_message
+* django_site
+* gissmo_chainconfig_bck
+* gissmo_equipaction
+* gissmo_equipstate
+* gissmo_paramequipmodel
+* gissmo_stationaction
+* gissmo_changemodelmodification
+
+À la fin du script de migration il faut prévoir de supprimer toutes les tables commençant par le mot « gissmo_ ».
+
+===== Règles de transfert =====
+
+* Pour la plupart des objets, on commence toujours par vérifier qu'un objet identique n'existe pas déjà.
+* Si on crée de nouveaux ID il faut sauvegarder dans une variable l'ensemble des couples (ancien ID, nouveau ID)
+* l'ordre proposé ci-après est important pour la création des nouveaux objets
+
+==== Supertype (gissmo_equipsupertype -> equipment_type) ====
+
+Tel quel
+
+Règles : 
+
+* on garde les IDs tels quels !
+
+==== Type (gissmo_equiptype -> equipment_type) ====
+
+Identique si même :
+
+* name
+* rank
+
+Règles : 
+
+* nouveaux IDs
+
+==== Model (gissmo_equipmodel -> equipment_model) ====
+
+Identique si même : 
+
+* name
+* rank
+* manufacturer
+* is_network_model
+* type
+
+Règles : 
+
+* nouveaux IDs
+* type prend l'ID des nouveaux types précédemment créés
+
+==== Agency (gissmo_organism -> affiliation_agency) ====
+
+Identique si même : 
+
+* name
+* type
+
+Règles : 
+
+* nouveaux IDs
+* si l'objet contient un parent, on cherche le nouveau parent et on le lie => implique que le parent est déjà crée !
+
+==== Groundtype (gissmo_groundtype -> place_groundtype) ====
+
+Identique si même : 
+
+* name
+* description
+
+Règles : 
+
+* nouveaux IDs
+
+==== Ancienne table StationSite (gissmo_stationsite -> place_place + network_station) ====
+
+La table StationSite dans Gissmo 1.x contient : 
+
+* des observatoires (affiliation_agency)
+* des sites (place_place)
+* des stations (network_station)
+
+Il est plus prudent de les étudiers l'un après l'autre : 
+
+* d'abord observatoires
+* puis les « place »
+* et finalement les stations
+
+==== Observatoire [Agency] (gissmo_stationsite -> affiliation_agency) ====
+
+Les Observatoires ne sont QUE les gissmo_stationsite de type 2.
+
+Identique si même : 
+
+* code
+
+Règles : 
+
+* nouveaux IDs
+* si le code est « DTINSU », on le remplace par « DT INSU »
+* si le code est « OMP (Tarbes) », on le remplace par « OMP-TARBES »
+* le type est toujours 0 (Obersvatoire)
+* si l'objet possède un parent, on fait les même vérification (code DTINSU/OMP, nouvel ID, type 0, etc.) et on lie l'enfant à son parent
+
+==== Place (gissmo_stationsite -> place_place) ====
+
+Les Places ne sont QUE les gissmo_stationsite de type 3, 4 et 5.
+
+Identique si même : 
+
+* placename (on utilise en priorité le name, sinon le site_code). Si le type de stationsite est 0, alors on ajoute "Undefined" devant. En limitant à 40 caractère le tout.
+* longitude
+* latitude
+
+Règles : 
+
+* nouveaux IDs
+* gissmo_stationsite.operator => place_place.agency
+* on affecte le type de Place suivant le type de station, suivant le modèle Stationtype/Placetype suivant : 
+	* 1 (Station) devient None car deviendra un site avec l'état PRODUCTION
+	* 6 (Station test) devient None car deviendra un site avec l'état TEST
+	* 7 (Station théorique) devient None car deviendra un site avec l'état THEORITICAL
+	* 2 (Observatoire) devient 18 (Warehouse)
+	* 3 (SAV) devient 1 (Customer service)
+	* 4 (NÉANT) et 5 (AUTRE) deviennent 0 (Unknown)
+* si le site possède un groundtype, on regarde si un groundtype correspond. Sinon on en crée un nouveau
+* on fait un lien entre la Place et l'Agency à la fin
+
+==== Station (gissmo_stationsite -> network_station) ====
+
+Les Stations ne sont QUE les gissmo_stationsite de type 1, 6 et 7.
+
+Identique si même : 
+
+* code
+
+Règles : 
+
+* nouveaux IDs
+* stationsite.name devient station.description
+* si la station contient des "built" (des pièces ou des locals sur site), on crée un objet Place (place_place) pour chacun. On lie ensuite l'objet Place nouvellement crée avec la station.
+* si la station possède des équipements, et des interventions liées à ces équipements, on va crée un objet Place (nommé Undefined + code station) qu'on va lier à la station
+
+==== Network (gissmo_network -> network_network) ====
+
+Identique si même : 
+
+* code
+
+Règles : 
+
+* nouveaux IDs
+* on abandonne les champs xml_ (inutiles car non renseignés dans Gissmo)
+
+==== Ancienne table Built (gissmo_built -> place_place) ====
+
+Gissmo 1.x propose des locaux liés à une station/site. La notion entre Station, Site et Lieu dans gissmo_stationsite étant difficile à cerner, chacun peut avoir des "Built" (locaux). Il est donc primordial de réussir à séparer les notions dans Gissmo 2.0 et placer des Lieux (place_place) en corrélation avec leurs station (network_station) respectives.
+
+La migration prend donc la table gissmo_built et en fait des Place (place_place) avec un lien vers leur Agency et leur Station.
+
+Note : Gissmo 1.x a un objet BuiltType qui devient une liste dans place/types.py de Gissmo 2.0.
+
+Identique si même : 
+
+* name
+* type
+* note
+
+Règles : 
+
+* nouveaux IDs
+* basé sur le nom du BuiltType de Gissmo, on va choisir le nouveau type de Place : 
+	* si aucune corrélation trouvée, on met 0 (Unknown)
+	* '01. Tunnel': 2 (Tunnel)
+	* '02. Galerie': 3 (Drift)
+	* '04. Drain': 4 (Drain)
+	* '05. Grotte': 5 (Cave)
+	* '06. Cave': 6 (Cellar)
+	* '07. Sous sol': 7 (Underground)
+	* '08. Armoire': 8 (Cabinet)
+	* '09. Caisson': 9 (Chamber)
+	* '10. Préfabriqué': 10 (Prefabricated)
+	* '11. Local': 11 (Premises)
+	* '12. Fort militaire': 12 (Fort)
+	* '13. Radier': 13 (Apron)
+	* '14. Dalle': 14 (Slab)
+	* '15. Exterieur': 15 (Outside)
+	* '03. Puits sismique': 16 (Well)
+	* 'Autre': 0 (Unknown)
+	* '16. Forage': 17 (Drilling)
+* si pas de nom de BuiltType, on affecte le mot "Unkown" (ce qui implique, d'après la règle précédente, qu'on aura 0 comme type car aucune corrélation trouvée)
+* l'Agency sera celle de la station (built.station.operator)
+* on fait donc le lien entre la Place et l'Agency
+* si built.station.code existe en tant que Station dans Gissmo 2.0, on fait un lien entre la Place et la Station
+
+==== Equipment (gissmo_equipment -> equipment_equipment) ====
+
+Maintenant que les Place, les Model, les Types et les Station existent, on peut ajouter les équipements.
+
+Identique si même : 
+
+* name
+* model
+* owner
+* place
+* last_user (par défaut admin.gissmo, utilisé pour le script de migration)
+
+Règles : 
+
+* nouveaux IDs
+* si aucune stationsite n'est liée à cet équipement, il va dans la Place nommée « NÉANT » (on crée aussi le lien)
+* si une stationsite et liée à cet équipement, et que cette station est liée à une Place existante (déjà créée précédemment), alors on fait le lien entre les 2
+* si au contraire, un objet stationsite est lié à cet équipement, mais qu'on ne trouve pas de Place déjà créée, il va falloir faire une recherche dessus : 
+	* on vérifie les interventions sur cet équipement. La dernière intervention. Si un built est lié, on regarde qu'il existe. Si tout est bon, existe, etc. on fait le lien
+	* si le premier point échoue (pas de built existant, ou pas d'intervention), on crée la Place et on fait le lien (en utilisant l'opérateur de stationsite.operator)
+
+==== Datatype (gissmo_datatype -> network_datatype) ====
+
+Identique si même : 
+
+* name
+
+Règles : 
+
+* nouveaux IDs
+
+==== Projet (gissmo_project -> project_project) ====
+
+Identique si même : 
+
+* group
+* manager
+
+Règles : 
+
+* nouveaux IDs
+
+==== Paramètre (gissmo_parameter_equip -> equipment_parameter) ====
+
+Identique si même : 
+
+* name
+* model
+
+Règles : 
+
+* nouveaux IDs
+
+==== Valeurs (gissmo_parametervalue -> equipment_value) ====
+
+Identique si même : 
+
+* name
+* parameter
+* is_default
+
+Règles : 
+
+* nouveaux IDs
+
+**TODO: À compléter**
