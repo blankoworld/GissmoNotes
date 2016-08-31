@@ -5,3 +5,52 @@ Creation-Date: 2016-08-30T16:13:56+02:00
 ====== API 2.0 ======
 Created mardi 30 août 2016
 
+L'origine de l'existence de l'API est principalement le besoin pour l'Observatoire de Nice, à l'aide de sa base Phœnix, d'accéder aux informations contenues dans Gissmo.
+
+Mais l'API permet aussi : 
+
+* à plusieurs applications de discuter entre elles
+* de réduire la taille des informations échangées (à l'aide du format .json)
+* de faciliter le développement de plusieurs programmes pour le suivi du matériel, l'état des stations, l'accès à ces dernières, etc.
+
+===== Idée de fonctionnement =====
+
+Ce que j'ai en tête serait de : 
+
+* faire une interface admin Django pour les objets principaux que le superuser aurait à créer/maintenir, comme : 
+	* Datatype
+	* User
+	* Group
+	* Project
+	* Document type
+	* Equipment Model
+	* Equipment Type
+	* Equipment State (pas besoin de modification par l'admin)
+	* ForbiddenEquipment Model
+	* Ground type
+	* Network
+	* Parameter
+	* Value
+	* Place State (pas besoin de modification par l'admin)
+* mettre ces objets en READ ONLY dans l'API
+* ajouter les autres objets en Read & Write
+* mettre certains objets accessibles uniquement après avoir été identifié : 
+	* Service
+	* IP Address
+
+===== Format d'URL =====
+
+Quelques règles pour le formatage des adresses réticulaires : 
+
+* mettre le nom des objets au **pluriel**. Exemple pour l'objet User : users
+* l'adresse URL de base est du type **/api/v2/**
+* ensuite on suit les règles suivantes : http://www.vinaysahni.com/best-practices-for-a-pragmatic-restful-api#restful (objets/1/comments pour la liste des commentaires sur l'objet 1)
+
+===== Documentation =====
+
+Il est **IMPORTANT** de créer une documentation de son API.
+
+Quelques pistes :
+
+* https://github.com/lord/slate
+* http://www.django-rest-framework.org/topics/documenting-your-api/
