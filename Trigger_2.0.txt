@@ -30,7 +30,6 @@ Ainsi on estime les objets suivants comme importants :
 
 * equipment_equipment
 * place_place
-* network_network
 * network_installation
 * network_channel : chaque petite modification entraîne une intervention
 * network_installation_configurations
