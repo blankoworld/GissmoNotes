@@ -24,9 +24,17 @@ Tables :
 
 ===== Objets concernés =====
 
+En discutant avec Hélène, les objets concerné par la création d'une intervention sont tout ceux qui ont un impact sur la donnée résultante.
+
+Ainsi on estime les objets suivants comme importants : 
+
 * equipment_equipment
-* network_place
+* place_place
+* network_network
 * network_installation
+* network_channel : chaque petite modification entraîne une intervention
+* network_installation_configurations
+* network_station
 
 ===== Clustering =====
 
