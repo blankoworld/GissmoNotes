@@ -34,7 +34,7 @@ Il faut planifier la [[../Migration_2.0.txt|Migration vers Gissmo 2.0]].
 	* les documents dans l'interface admin
 	* l'affichage de la carte
 * Ajouter une couche SSL Nginx pour vérifier ces accès !!! (Cf. liste précédente)
-* Changer gissmo/__init__.py pour monter la version
+* Changer gissmo/init.py pour monter la version
 * Adapter le CHANGELOG pour la version courante
 * Modifier la documentation pour augmenter le numéro de version
 * Appliquer un TAG git v1.x.y
@@ -42,3 +42,25 @@ Il faut planifier la [[../Migration_2.0.txt|Migration vers Gissmo 2.0]].
 * Readthedocs : aller sur la configuration pour mettre la nouvelle version par défaut
 * Rédiger un courriel aux utilisateurs et l'ENVOYER à Jérôme et Maxime
 * Envoyer le courriel FINAL aux utilisateurs pour cette nouvelle version
+
+===== Veille =====
+
+Les outils utilisés sont forcément ceux à suivre : 
+
+* Python
+* Django
+* postgreSQL
+* django-rest-framework
+* Docker
+* Github
+* [facultatif] Readthedocs (ne contient pas de flux RSS)
+* Travis
+* Mkdocs
+* XXX : surveiller aussi l'outil utilisé pour faire la veille (exemple si on choisi MoonMoon, faire un flux pour les mises à jour dudit outil)
+
+À voir s'il est intéressant de surveiller les outils JS comme : 
+
+* AngularJS
+* Ember JS
+* React
+* ELM
