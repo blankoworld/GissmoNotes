@@ -24,3 +24,21 @@ Il s'agit donc de lier l'ensemble de ces éléments afin de fournir une expérie
 ===== Migration vers Gissmo 2.0 =====
 
 Il faut planifier la [[../Migration_2.0.txt|Migration vers Gissmo 2.0]].
+
+===== TODO avant une sortie Gissmo =====
+
+* Installer Gissmo en mode production (avec SSL!) sur sa machine pour vérifier l'accès à :
+	* l'API
+	* l'interface admin
+	* les documents dans l'API
+	* les documents dans l'interface admin
+	* l'affichage de la carte
+* Ajouter une couche SSL Nginx pour vérifier ces accès !!! (Cf. liste précédente)
+* Changer gissmo/__init__.py pour monter la version
+* Adapter le CHANGELOG pour la version courante
+* Modifier la documentation pour augmenter le numéro de version
+* Appliquer un TAG git v1.x.y
+* git push --tags
+* Readthedocs : aller sur la configuration pour mettre la nouvelle version par défaut
+* Rédiger un courriel aux utilisateurs et l'ENVOYER à Jérôme et Maxime
+* Envoyer le courriel FINAL aux utilisateurs pour cette nouvelle version
