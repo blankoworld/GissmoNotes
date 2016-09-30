@@ -1,0 +1,44 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-09-30T15:47:02+02:00
+
+====== API 2.0 TODO ======
+Created vendredi 30 septembre 2016
+
+Temps estimé actuellement :
+* 1 mois pour doc, tests, migration, deleted, API et CHANGELOG
+* 1 mois pour l'interface ?
+
+* Documentation à faire/refaire :
+	* développeur
+	* utilisateur (schéma transitions)
+	* installation (dépendances, etc.)
+* Tests :
+	* selenium
+	* simples : affichage d'un formulaire, liste d'éléments
+	* api : quelques tests d'accès aux éléments de l'API
+* script de migration à finir avec Maxime pour vérifier l'intégrité des données
+* empêcher la suppression d'un quelconque élément en base : 
+	* ajouter une colonne "isDeleted"
+	* filtrer tous les objets Django dans l'Admin (ou ailleurs) qui ont été marqués comme supprimés
+	* modifier le bouton delete de Django pour avoir le comportement d'ajouter simplement "isDeleted" à la ligne
+	* QUESTION : comment gère-t-on la suppression en cascade des éléments d'une intervention, des liens en tous genres ?
+* API : 
+	* projects : COMMENT afficher les détails du groupe correspondant ?
+	* affiner les permissions d'accès aux objets avec Jérôme et Maxime ?
+	* mettre les tables d'historique en lecture seule dans l'API
+	* tester CHAQUE lien de l'API APRÈS la migration des données => pleins de soucis d'affichage, exemple : places
+* CHANGELOG à créer + remplir
+* Interface (voir la liste dans le fichier TODO de la branche "experimental") : 
+	* utiliser outil interface comme Bootstrap, Google Material Design Lite, etc. (Cf. viewflow.io aussi)
+	* intégrer l'outil choisi
+	* créer une page d'accueil avec des "tâches" que l'utilisateur voudrait faire (par exemple "Ajouter une station", "Nouveau canal", "Chercher station", etc.)
+	* Gérer les interventions : 
+		* validation des interventions (seulement si on trouve des utilisateurs)
+		* ajout des utilisateurs
+		* Comment déplacer des modifications qui ont été un autre jour que celui d'aujourd'hui SI une autre intervention à la même date existe ? (puisque date/place est une contrainte unique ?)
+	* changement des états d'équipements et stations
+	* QUESTION : tenter des wizard en plusieurs étapes ?
+	* ajouter des "autocomplete" pour le choix des places dans les formulaires
+	* Créer un objet pour chaque history afin d'accéder à ces informations (en lecture seule sous Django admin pour les interventions)
+	* Ajouter les history liés aux interventions sous l'intervention afin d'en lire le contenu ?

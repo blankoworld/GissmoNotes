@@ -60,3 +60,9 @@ Quelques pistes :
 
 * https://github.com/lord/slate
 * http://www.django-rest-framework.org/topics/documenting-your-api/
+
+===== Test du temps d'accès =====
+
+Appliquer le code suivant sur un poste distant : 
+
+for i in calibration_units chains channel_datatypes channel_parameters channels documents equipments ipaddresses networks organisms services sites; do curl -so /dev/null -w "$i: %{time_total}\n" "https://gissmo.unistra.fr/api/v1/$i.json"; done
