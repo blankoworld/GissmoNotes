@@ -13,6 +13,12 @@ Mais l'API permet aussi :
 * de réduire la taille des informations échangées (à l'aide du format .json)
 * de faciliter le développement de plusieurs programmes pour le suivi du matériel, l'état des stations, l'accès à ces dernières, etc.
 
+===== Accès =====
+
+* Une liste d'IP permet de déterminer les ordinateurs qui ont un accès **sans identification** à l'API
+* Tous les autres doivent s'identifier pour accéder à l'API
+* Parmi l'API, certains objets sont modifiables, d'autres non
+
 ===== Idée de fonctionnement =====
 
 Ce que j'ai en tête serait de : 
