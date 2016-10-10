@@ -18,6 +18,7 @@ Ce que nous aimerions obtenir :
 * Script de [[../Clustering_2.0.txt|clustering]] lancé régulièrement pour regrouper les modifications par intervention
 * [[../API_2.0.txt|API]] à l'aide de Django + django-rest-framework
 * [[../Frontend_2.0.txt|Front-end]] HTML5 + CSS3 + JS
+* Liste de [[Tasks 2.0|tâches]] proposées par l'interface
 
 Il s'agit donc de lier l'ensemble de ces éléments afin de fournir une expérience utilisateur agréable, un environnement de développement facile et créer un logiciel Open Source digne de ce nom.
 

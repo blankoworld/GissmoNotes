@@ -1,0 +1,37 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-10-10T15:25:41+02:00
+
+====== Tasks 2.0 ======
+Created lundi 10 octobre 2016
+
+Ensemble des tâches que l'interface permettra d'accomplir
+
+===== Interface utilisateur =====
+
+* Liste des stations avec : 
+	* bouton « Carte des stations » (dans cette page bouton « nouvelle station ») => faire un tri par réseau ?
+	* bouton « Nouvelle station »
+	* permettre de chercher une station
+* Déclarer un à plusieurs canaux : 
+	* Wizard de création d'un canal ou bien de plusieurs canaux (par 3)
+* Infos stations (Dashboard?) : 
+	* bouton « Afficher sur Google Map »
+	* bouton « Afficher sur la carte »
+	* 5 dernières interventions (dates + équipements touchés)
+	* Canaux courants (s'il y en a)
+	* Équipments courants (s'il y en a) : pour CHAQUE équipement, fiche équipement (en cliquant dessus) avec sa configuration. Afficher sous forme de chaîne d'acquisition ?
+	* bouton « Historique » pour obtenir l'historique de la station (historique des canaux + historique des équipments + toutes les interventions ?)
+* Liste des équipements :
+	* afficher la liste du matériel provenant d'un observatoire particulier
+	* afficher la liste du matériel dans un état donné
+* Liste du matériel ayant besoin d'une maintenance (faire une liste d'états qui ne correspondent PAS à un besoin de maintenance)
+* Dernières interventions : juste une liste des 10 dernières interventions (date, site/station et équipement touché)
+
+
+===== Interface admin =====
+
+* modèle d'équipement
+* type d'équipement + supertype
+* projets
+* utilisateurs
