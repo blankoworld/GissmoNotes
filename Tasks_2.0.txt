@@ -28,6 +28,7 @@ Ensemble des tâches que l'interface permettra d'accomplir
 * Liste du matériel ayant besoin d'une maintenance (faire une liste d'états qui ne correspondent PAS à un besoin de maintenance)
 * Dernières interventions : juste une liste des 10 dernières interventions (date, site/station et équipement touché)
 
+TODO : compléter
 
 ===== Interface admin =====
 
@@ -35,3 +36,5 @@ Ensemble des tâches que l'interface permettra d'accomplir
 * type d'équipement + supertype
 * projets
 * utilisateurs
+
+TODO : compléter
