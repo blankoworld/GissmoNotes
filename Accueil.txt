@@ -52,6 +52,7 @@ Les outils utilisés sont forcément ceux à suivre :
 * Django
 * postgreSQL
 * django-rest-framework
+* Alpine Linux
 * Docker
 * Github
 * [facultatif] Readthedocs (ne contient pas de flux RSS)

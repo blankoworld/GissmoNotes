@@ -1,0 +1,50 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-10-14T15:19:09+02:00
+
+====== Chiffrement ======
+Created vendredi 14 octobre 2016
+
+===== Liens =====
+
+* [[http://krisjordan.com/essays/encrypting-with-rsa-key-pairs|Générer une clé RSA]]
+* [[https://github.com/pyca/cryptography|Source de la bibliothèque Cryptography sur Github]]
+* [[https://cryptography.io/en/latest/hazmat/backends/openssl/|Backend OpenSSL]]
+* [[https://cryptography.io/en/latest/hazmat/primitives/asymmetric/rsa/|Utilisation de RSA dans Cryptography]]
+
+===== Idée =====
+
+* Génération d'une clé RSA : ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+* Extraction de la clé : openssl rsa -in ~/.ssh/id_rsa -pubout > [[~/.ssh/id_rsa.pub.pem]]
+* Lecture de la clé en Python :
+
+from cryptography.hazmat.primitives import serialization
+with open("path/to/key.pem", "rb") as key_file:
+	 public_key = serialization.load_pem_private_key(
+		 key_file.read(),
+		 backend=default_backend()
+	 )
+
+* Chiffrement : 
+
+from cryptography.hazmat.primitives import hashes
+from cryptography.hazmat.primitives.asymmetric import padding
+
+message = b"encrypted data"
+ciphertext = public_key.encrypt(
+	 message,
+	 padding.OAEP(
+		 mgf=padding.MGF1(algorithm=hashes.SHA1()),
+		 algorithm=hashes.SHA1(),
+		 label=None
+	 )
+ )
+
+* Écriture du message chiffré dans un fichier (pour exemple) : 
+
+with open('/home/olivier/cipher.txt', "wb") as ffile:
+	ffile.write(ciphertext)
+
+* Lecture du contenu chiffré du fichier : 
+
+cat cipher.txt | openssl rsautl -decrypt -inkey test_id_rsa -oaep
