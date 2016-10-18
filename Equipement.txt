@@ -1,0 +1,16 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2016-10-17T11:02:36+02:00
+
+====== Equipement ======
+Created lundi 17 octobre 2016
+
+===== Configuration =====
+
+La configuration d'un équipement se fait en 3 étapes : 
+
+* Sur le modèle d'équipement on crée les paramètres d'équipement, les valeurs possibles, et la valeur par défaut. Table « equipment_parameter » et « equipment_value ».
+* Ensuite on peut choisir une valeur spécifique pour chaque paramètre pour un équipement particulier. Par exemple le STS-2 numéro XYZ123 aura un gain de +10. Ceci est enregistré dans la table « equipment_configuration »
+* Au moment de l'installation d'un équipement sur une station, on configure l'équipement avec un ENSEMBLE de paramètres (TOUS les paramètres du modèle au MINIMUM, on peut éventuellement en rajouter non indiqués) et des valeurs choisies. Ces dernières sont ajoutées dans la table « equipment_configuration », on crée un lien avec l'installation « network_installation_configurations ». En premier lieu on propose à l'utilisateur les valeurs choisies par défaut pour l'équipement (entre la table « equipment_equipment » et la table « equipment_configuration ». Si aucune valeur trouvée, on prendra les valeurs par défaut du modèle d'équipement.
+
+Fonctionnalité : proposer à l'utilisateur un bouton "garder comme configuration par défaut pour cet équipement"
