@@ -5,7 +5,9 @@ Creation-Date: 2016-10-10T15:25:41+02:00
 ====== Tasks 2.0 ======
 Created lundi 10 octobre 2016
 
-Ensemble des tâches que l'interface permettra d'accomplir
+Ensemble des tâches que l'interface permettra d'accomplir.
+
+TODO: trouver un nom pour ces « Tâches ». Par exemple opération : http://www.cnrtl.fr/synonymie/intervention (trouver un nom positif et qui ne renvoit pas au travail, à la douleur d'accomplir quelque chose, etc.)
 
 ===== Interface utilisateur =====
 

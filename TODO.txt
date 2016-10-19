@@ -9,20 +9,33 @@ Temps estimé actuellement :
 * 1 mois pour doc, tests, migration, deleted, API et CHANGELOG
 * 1 mois pour l'interface ?
 
-* Documentation à faire/refaire :
-	* développeur
-	* utilisateur (schéma transitions)
-	* installation (dépendances, etc.)
-* Tests :
-	* selenium
-	* simples : affichage d'un formulaire, liste d'éléments
-	* api : quelques tests d'accès aux éléments de l'API
-* script de migration à finir avec Maxime pour vérifier l'intégrité des données
+===== Documentation =====
+
+* développeur
+* utilisateur (schéma transitions)
+* installation (dépendances, etc.)
+
+===== Tests =====
+
+* selenium
+* simples : affichage d'un formulaire, liste d'éléments
+* api : quelques tests d'accès aux éléments de l'API
+
+===== Script Migration =====
+
+* créer les nouvelles tables
+* migrer les données
+* supprimer les anciennes tables
+* voir avec Maxime et Hélène si la base de données tient la route d'un point de vue plateforme instrumentale
+
+===== Idées ? =====
+
 * empêcher la suppression d'un quelconque élément en base : 
 	* ajouter une colonne "isDeleted"
 	* filtrer tous les objets Django dans l'Admin (ou ailleurs) qui ont été marqués comme supprimés
 	* modifier le bouton delete de Django pour avoir le comportement d'ajouter simplement "isDeleted" à la ligne
 	* QUESTION : comment gère-t-on la suppression en cascade des éléments d'une intervention, des liens en tous genres ?
+
 * empêcher la suppression de : 
 	* intervention : car le cas échéant on doit gérer un script pour faire le clustering
 	* place : car cela fout en l'air le clustering

@@ -35,7 +35,7 @@ Ainsi j'estime les objets suivants comme importants :
 * network_installation
 * network_channel : chaque petite modification entraîne une intervention
 * network_installation_configurations : seulement la configuration d'une installation. Pas les configuration d'un équipement qui ne sont en fait QUE la configuration par DÉFAUT d'un équipement
-* network_station
+* network_station => **ne semble pas nécessaire** car si on change le code on ferme la station et on en ouvre une autre. Ce genre de cas (changer le code station par exemple) n'arrive qu'une à deux fois tous les 10 ans…
 
 ===== Clustering =====
 
