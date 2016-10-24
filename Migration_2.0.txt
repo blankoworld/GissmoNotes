@@ -271,4 +271,14 @@ Règles :
 
 * nouveaux IDs
 
+===== Doctype (gissmo_stationdoctype, gissmo_equipdoctype et gissmo_equipmodeldoctype -> document_type) =====
+
+Identique si même : 
+
+* name
+
+Règles : 
+
+* nouveaux IDs
+
 **TODO: À compléter**
