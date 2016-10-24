@@ -28,6 +28,12 @@ Temps estimé actuellement :
 * supprimer les anciennes tables
 * voir avec Maxime et Hélène si la base de données tient la route d'un point de vue plateforme instrumentale
 
+===== Production =====
+
+* faire un fichier production_settings.py (qui surcharge settings.py)
+* utiliser ce fichier production_settings.py dans le script docker-entrypoint
+* vérifier que la Django Debug Toolbar n'apparaît pas
+
 ===== Idées ? =====
 
 * empêcher la suppression d'un quelconque élément en base : 
