@@ -124,3 +124,16 @@ Voici le schéma des états d'un lieu donné :
 Voici le schéma des états d'un équipement - validé avec Maxime : 
 
 {{./etat_equipement.png}}
+
+
+===== L'objet « Place » =====
+
+GISSMO étant un outil de gestion de matériel, nous utilisons des lieux pour stocker, entreproser, recevoir, envoyer, tester, installer nos équipements. C'est à cet effet qu'existe l'objet « Place ».
+
+Il définit une longitude, latitude, une adresse, etc. d'un lieu spécifique utilisé pour une station, un organisme (Agency) ou une intervention.
+
+Étant donné que l'utilisateur pense souvent à un endroit quand il parle d'un organisme ou d'une station, a été implémenté la possibilité de définir des lieux par défaut.
+
+Ainsi il est suggéré très fortement, à la création d'un organisme, de définir son adresse et son lieu afin de pouvoir créer et lier un objet « Place » par défaut à cet organisme.
+Il en est de même pour une station.
+On définit ainsi un lieu de type "Warehouse" pour un organisme, et un lieu de type "Outside" pour une station.
