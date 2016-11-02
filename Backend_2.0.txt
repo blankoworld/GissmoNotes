@@ -137,3 +137,16 @@ Il définit une longitude, latitude, une adresse, etc. d'un lieu spécifique uti
 Ainsi il est suggéré très fortement, à la création d'un organisme, de définir son adresse et son lieu afin de pouvoir créer et lier un objet « Place » par défaut à cet organisme.
 Il en est de même pour une station.
 On définit ainsi un lieu de type "Warehouse" pour un organisme, et un lieu de type "Outside" pour une station.
+
+===== Configuration =====
+
+La configuration des équipements se situe à 2 niveaux : 
+
+* La configuration par défaut d'un équipement
+* La configuration de l'équipement sur une installation précise de celui-ci à un lieu donné (table network_installation_configurations)
+
+Si la seconde option (configuration de l'équipement sur une installation précise de celui-ci) est facile à obtenir, la configuration par défaut d'un équipement est un peu moins triviale : on doit soustraire la configuration des installations pour qu'il ne reste que celle par défaut de l'équipement.
+
+On utilise la requête SQL suivante (pour donner un ordre d'idée avec l'équipement dont l'ID est 15) : 
+
+SELECT id, parameter, value, equipment_id FROM equipment_configuration WHERE id not IN (SELECT n.configuration_id FROM network_installation_configurations as n, network_installation as i, equipment_equipment as e WHERE n.installation_id = i.id AND i.equipment_id = e.id AND i.equipment_id = 15) AND equipment_id = 15;
