@@ -73,6 +73,7 @@ Règles :
 
 * nouveaux IDs
 * si l'objet contient un parent, on cherche le nouveau parent et on le lie => implique que le parent est déjà crée !
+* on crée par défaut une Place du même nom qu'on lie comme étant la « main » (principale)
 
 ==== Groundtype (gissmo_groundtype -> place_groundtype) ====
 
@@ -153,6 +154,7 @@ Règles :
 * stationsite.name devient station.description
 * si la station contient des "built" (des pièces ou des locals sur site), on crée un objet Place (place_place) pour chacun. On lie ensuite l'objet Place nouvellement crée avec la station.
 * si la station possède des équipements, et des interventions liées à ces équipements, on va crée un objet Place (nommé Undefined + code station) qu'on va lier à la station
+* pour chaque station on crée un built par défaut (main) avec le même nom
 
 ==== Network (gissmo_network -> network_network) ====
 
@@ -280,5 +282,128 @@ Identique si même :
 Règles : 
 
 * nouveaux IDs
+
+===== Modèles d'équipements interdits (gissmo_forbiddenequipmentmodel -> equipment_forbiddenmodel) =====
+
+Identique si même : 
+
+* original
+* recommended
+
+Aucune règle supplémentaire.
+
+===== Adresses IP (gissmo_ipaddress -> equipment_ipaddress) =====
+
+Identique si même : 
+
+* ip
+* netmask
+* equipment
+
+Règles : 
+
+* nouveaux IDs
+
+===== Services (gissmo_service -> equipment_service) =====
+
+Identique si même :
+
+* protocol
+* port
+* description
+* equipment
+
+Règles : 
+
+* nouveaux IDs
+
+===== Intervention (gissmo_intervention -> intervention_intervention) =====
+
+Identique si même : 
+
+* date
+* place
+
+Règles : 
+
+* nouveaux IDs
+* si l'intervention porte sur un site de type 1, 6 ou 7 (station) on utilise la dernière Place enregistrée pour cette station (dans l'ordre du script, aucune autre Place n'a été enregistrée pour la station)
+* si l'intervention porte sur un site de type 2 (Agency), on utilise la dernière Place enregistrée pour cette Agence (par ordre décroissant d'ID)
+* si l'intervention porte sur un site de type 3, 4, ou 5 (autres emplacements), on utilise la Place précédemment créées pour cet endroit
+* une fois la Place acquise, on va cherche l'intervention adéquate. Si elle n'existe pas, on la crée. Et on ajoute la note attachée.
+
+===== Intervention - organisme (gissmo_intervorganism -> intervention_operator) =====
+
+Identique si même : 
+
+* operator
+* intervention
+
+Règles : 
+
+* nouveaux IDs
+* on ajoute la note telle quelle
+
+===== Intervention - utilisateur (gissmo_intervuser -> intervention_protagonist) =====
+
+Identique si même : 
+
+* user
+* intervention
+
+Règles : 
+
+* nouveaux IDs
+* on ajoute la note telle quelle
+
+===== Intervention - stations (gissmo_intervstation -> place_place_history, place_state) =====
+
+Cette table gissmo_intervstation est l'historique des stations (leurs états et des notes à son sujet).
+
+Règles : 
+
+1/ On trie les interventions par station
+2/ pour chaque station, on prend l'ensemble des interventions stations (gissmo_intervstation) qui représente l'historique de la station. Triées par date (afin d'avoir l'historique des états)
+3/ pour chaque intervention station (gissmo_intervstation) on crée un élément d'historique et un état associé
+4/ chaque fois qu'on ajoute un état on regarde si un état précédent (dans le programme) a été enregistré afin d'associer à ce dernier une date de fin correspondant à la date de l'état actuel
+
+Les états (ancien -> nouveau) : 
+
+* 1 (Installation) : 2 (Ready)
+* 2 (Operation) : 3 (Running)
+* 3 (Major failure) : 4 (Failure)
+* 4 (Ongoing issue) : 4 (Failure)
+* 5 (Closed) : 5 (Closed)
+* 6 (Other) : 0 (Available)
+* 7 (In test) : 1 (In test)
+
+L'ancienne action (station_action) est reprise dans la note. Avec l'ancienne note. Sous la forme : """[ancienne action] ancienne note""".
+
+===== Intervention - équipements (gissmo_intervequipment -> equipment_equipment_history, equipment_state) =====
+
+Cette table gissmo_intervequipment est l'historique des équipements (leurs états et des notes associées).
+
+Règles : 
+
+1/ on récupère la liste des équipements qui sont l'objet d'une intervention (gissmo_intervequipement)
+2/ pour chaque équipement on prend les interventions d'équipement associés (gissmo_intervequipment). Triés par date (afin d'avoir l'historique des états)
+3/ pour chaque intervention on crée un historique de l'équipement et un état associé
+4/ si l'intervention d'équipement signale un autre emplacement que celui de l'ancienne intervention, on crée une nouvelle intervention avec la nouvelle Place à la date de l'intervention d'équipement
+5/ chaque fois qu'on ajoute un état on regarde si un état précédent (dans le programme) a été enregistré afin d'associer à ce dernier une date de fin correspondant à la date de l'état actuel
+
+Les états (ancien -> nouveau) :
+
+* 1 (Running) : 4 (Running)
+* 2 (To be tested) : 2 (To be test)
+* 3: (Available) : 3 (Available)
+* 4 (Ongoing issue) : 5 (Failure)
+* 5 (Out of order) : 6 (Broken)
+* 6 (In transit) : 8 (In transit)
+* 7 (Unusable) : 9 (Spar part)
+* 8 (Lost) : 10 (Lost)
+* 9 (Dismantled) : 7 (Waste)
+* 10 (Other) : 0 (Unknown)
+
+L'ancienne action (equipment_action) est gardé dans la note. Sous la forme : """[ancienne action] ancienne note""".
 
 **TODO: À compléter**
