@@ -406,4 +406,16 @@ Les états (ancien -> nouveau) :
 
 L'ancienne action (equipment_action) est gardé dans la note. Sous la forme : """[ancienne action] ancienne note""".
 
+===== Agences - utilisateurs (gissmo_organism_users -> affiliation_agency_users) =====
+
+Identique si même :
+
+* agency
+* user
+
+Règles : 
+
+* nouveaux IDs
+
+
 **TODO: À compléter**
