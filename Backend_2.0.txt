@@ -150,3 +150,12 @@ Si la seconde option (configuration de l'équipement sur une installation préci
 On utilise la requête SQL suivante (pour donner un ordre d'idée avec l'équipement dont l'ID est 15) : 
 
 SELECT id, parameter, value, equipment_id FROM equipment_configuration WHERE id not IN (SELECT n.configuration_id FROM network_installation_configurations as n, network_installation as i, equipment_equipment as e WHERE n.installation_id = i.id AND i.equipment_id = e.id AND i.equipment_id = 15) AND equipment_id = 15;
+
+===== Les Projets et les Agences =====
+
+La séparation entre projets et agences est bien définie par les règles suivantes.
+
+* Les projets gèrent des personnes (User) et des stations (Station).
+* Les agences sont des regroupements de personnes (User) dans des lieux spécifiques (Place).
+* Les agences gèrent les lieux (Place).
+* Une station (gérée par un projet) possède plusieurs lieux (Place) qui sont gérés par des agences (Agency).

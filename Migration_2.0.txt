@@ -417,5 +417,15 @@ Règles :
 
 * nouveaux IDs
 
+===== Projets - sites (gissmo_project_sites ->project_project_stations) =====
+
+Identique si même : 
+
+* project
+* station
+
+Règles : 
+
+* nouveaux IDs
 
 **TODO: À compléter**
