@@ -45,6 +45,7 @@ Temps estimé actuellement :
 * empêcher la suppression de : 
 	* intervention : car le cas échéant on doit gérer un script pour faire le clustering
 	* place : car cela fout en l'air le clustering
+* Permettre à l'utilisateur de redéfinir son mot de passe tout seul
 * API : 
 	* projects : COMMENT afficher les détails du groupe correspondant ?
 	* affiner les permissions d'accès aux objets avec Jérôme et Maxime ?
