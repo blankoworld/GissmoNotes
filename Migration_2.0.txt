@@ -417,7 +417,7 @@ Règles :
 
 * nouveaux IDs
 
-===== sProjets - sites (gissmo_project_sites ->project_project_stations) =====
+===== asProjets - sites (gissmo_project_sites ->project_project_stations) =====
 
 Identique si même : 
 
