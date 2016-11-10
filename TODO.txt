@@ -24,7 +24,7 @@ Temps estimé actuellement :
 ===== Script Migration =====
 
 * créer les nouvelles tables
-* migrer les données
+* migrer les données : storage_format + clock_drift à vérifier et migrer
 * supprimer les anciennes tables
 * voir avec Maxime et Hélène si la base de données tient la route d'un point de vue plateforme instrumentale
 
