@@ -65,3 +65,4 @@ Temps estimé actuellement :
 	* ajouter des "autocomplete" pour le choix des places dans les formulaires
 	* Créer un objet pour chaque history afin d'accéder à ces informations (en lecture seule sous Django admin pour les interventions)
 	* Ajouter les history liés aux interventions sous l'intervention afin d'en lire le contenu ?
+* Faire sauter la dépendance à django-leaflet pour la version 2.0

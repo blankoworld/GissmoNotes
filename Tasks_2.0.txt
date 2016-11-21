@@ -28,7 +28,7 @@ TODO: trouver un nom pour ces « Tâches ». Par exemple opération : http://www
 	* afficher la liste du matériel provenant d'un observatoire particulier
 	* afficher la liste du matériel dans un état donné
 * Liste du matériel ayant besoin d'une maintenance (faire une liste d'états qui ne correspondent PAS à un besoin de maintenance)
-* Dernières interventions : juste une liste des 10 dernières interventions (date, site/station et équipement touché)
+* Dernières interventions : juste ''une'' liste des 10 dernières interventions (date, site/station et équipement touché)
 
 TODO : compléter
 
