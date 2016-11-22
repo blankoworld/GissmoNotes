@@ -27,6 +27,8 @@ TODO: trouver un nom pour ces « Tâches ». Par exemple opération : http://www
 * Liste des équipements :
 	* afficher la liste du matériel provenant d'un observatoire particulier
 	* afficher la liste du matériel dans un état donné
+	* commander un matériel
+	* stocker un matériel (après réception par exemple)
 * Liste du matériel ayant besoin d'une maintenance (faire une liste d'états qui ne correspondent PAS à un besoin de maintenance)
 * Dernières interventions : juste ''une'' liste des 10 dernières interventions (date, site/station et équipement touché)
 
@@ -40,3 +42,19 @@ TODO : compléter
 * utilisateurs
 
 TODO : compléter
+
+===== Utilisateurs =====
+
+* Superuser
+* Instrumentaliste : personne qui va sur le terrain, fait des interventions, gère le stock de matériel
+* Lecteur : consulte la base de données pour trouver des informations sur les stations (via API ou interface simple)
+* Robot pour les observatoires (exemple Phœnix)
+
+===== Événements qui génèrent une action sur Gissmo =====
+
+* Retour de mission (installation d'une station, intervention de maintenance)
+* Préparation de mission (vérification de la présence du matériel)
+* Réception de matériel (après l'avoir commandé)
+* Commande de matériel
+* Test de matériel : vérification du matériel présent dans l'Observatoire de l'utilisateur courant et dans l'état "à tester"
+* Maintenance hebdomadaire : affichage des stations dont la maintenance est nécessaire et dont l'Observatoire dont l'utilisateur fait partie est opérateur de ladite station => utiliser une carte Leaflet pour ça ?
