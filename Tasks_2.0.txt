@@ -11,6 +11,7 @@ TODO: trouver un nom pour ces « Tâches ». Par exemple opération : http://www
 
 ===== Interface utilisateur =====
 
+* Connexion de l'utilisateur (identification)
 * Liste des stations avec : 
 	* bouton « Carte des stations » (dans cette page bouton « nouvelle station ») => faire un tri par réseau ?
 	* bouton « Nouvelle station »
@@ -29,8 +30,12 @@ TODO: trouver un nom pour ces « Tâches ». Par exemple opération : http://www
 	* afficher la liste du matériel dans un état donné
 	* commander un matériel
 	* stocker un matériel (après réception par exemple)
+	* configurer un matériel
 * Liste du matériel ayant besoin d'une maintenance (faire une liste d'états qui ne correspondent PAS à un besoin de maintenance)
 * Dernières interventions : juste ''une'' liste des 10 dernières interventions (date, site/station et équipement touché)
+* Définir les intervenants lors des différentes interventions créées (utilisateurs impliqués)
+* Fermeture de plusieurs canaux
+* Construire une station : définir les lieux et matériel nécessaire à la création de la station
 
 TODO : compléter
 
@@ -58,3 +63,48 @@ TODO : compléter
 * Commande de matériel
 * Test de matériel : vérification du matériel présent dans l'Observatoire de l'utilisateur courant et dans l'état "à tester"
 * Maintenance hebdomadaire : affichage des stations dont la maintenance est nécessaire et dont l'Observatoire dont l'utilisateur fait partie est opérateur de ladite station => utiliser une carte Leaflet pour ça ?
+* Déclaration d'une nouvelle station (théorique) en vue de compléter le réseau sur moyen terme
+* Disponibilité d'un matériel : savoir si un équipement est disponible pour monter une station par exemple et savoir dans quel observatoire il se situe
+* Localisation d'une station : trouver la localisation exacte d'une station afin de se repérer pour s'y rendre
+* Déclarer un problème sur le flux de données d'une station (un canal)
+* Consulter l'historique des équipements et des canaux d'une station afin de corréler d'éventuels problèmes de données avec l'état de la station à ce moment là => évolution vers une timeline au niveau interface graphique
+* Connexion à une station : récupération des adresses IP, des services disponibles et des ports de la station
+* Ouverture d'un à plusieurs canaux
+* Fermeture d'un à plusieurs canaux suite à fermeture de la station
+
+===== Écran supposés =====
+
+==== Station ====
+
+* Station map (homepage)
+* Station details
+	* Add channels
+	* Add 3 channels
+	* Add equipment
+* Add station
+	* Add new place (juste un bouton "+" ou autre pour créer une place rapidement)
+* Edit station (disponible sur « Station details »)
+* Search station
+
+==== Stock ====
+
+* Stock (homepage)
+* Equipment details (+ configurations)
+	* Change configuration
+* Add equipment
+* Search equipment
+* Edit equipment (disponible sur Equipment details)
+
+==== Notebook ====
+
+* Notebook (homepage)
+* Intervention details
+* Add intervention
+* Search intervention
+* Edit intervention (disponible sur Intervention details)
+* Station installation (wizard le plus compliqué AMHA)
+	* existing station
+	* new station
+	* existing place
+	* new place
+	* multiple equipments and configuration for it
