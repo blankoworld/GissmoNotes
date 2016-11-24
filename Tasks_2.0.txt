@@ -89,11 +89,15 @@ TODO : compléter
 ==== Stock ====
 
 * Stock (homepage)
-* Equipment details (+ configurations)
+* Equipment details (+ configurations + services + adresses IP)
 	* Change configuration
 * Add equipment
 * Search equipment
 * Edit equipment (disponible sur Equipment details)
+* Place details
+* Add place (champ optionnel avec la station)
+* Search place
+* Edit place (disponible sur Place details)
 
 ==== Notebook ====
 
@@ -103,8 +107,3 @@ TODO : compléter
 * Search intervention
 * Edit intervention (disponible sur Intervention details)
 * Station installation (wizard le plus compliqué AMHA)
-	* existing station
-	* new station
-	* existing place
-	* new place
-	* multiple equipments and configuration for it
