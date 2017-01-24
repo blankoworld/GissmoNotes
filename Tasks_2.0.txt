@@ -71,6 +71,8 @@ TODO : compléter
 * Connexion à une station : récupération des adresses IP, des services disponibles et des ports de la station
 * Ouverture d'un à plusieurs canaux
 * Fermeture d'un à plusieurs canaux suite à fermeture de la station
+* Désinstallation d'un équipement sur une station : cela change automatiquement l'état de l'équipement en "à tester" et demande un lieu de stockage (à donner par l'utilisateur)
+* Envoi d'un équipement quelque part : cela change automatiquement l'état de l'équipement en "en transit" et demande le lieu d'envoi à l'utilisateur
 
 ===== Écran supposés =====
 
@@ -107,3 +109,8 @@ TODO : compléter
 * Search intervention
 * Edit intervention (disponible sur Intervention details)
 * Station installation (wizard le plus compliqué AMHA)
+
+==== Equipement ====
+
+* Détail de l'équipement
+* Bouton "envoyer à" qui apparaît QUAND l'équipement est en état "en opération" OU en état "disponible"
