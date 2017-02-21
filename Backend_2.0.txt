@@ -9,49 +9,11 @@ Ce que nous attendons du Backend de la version 2.0.
 
 ===== Schéma =====
 
-Ci dessous le schéma de la version 2.0 alpha 5 : 
+Ci dessous le schéma de la version 2.0 (bêta 1) : 
 
 
-{{./GISSMO-v2.0-alpha5.png}}
+{{~/Documents/schemas/schema_gissmo_v2.0-beta1.png}}
 
-===== Modules Django =====
-
-En découpant le schéma et en regroupant les objets on obtient les modules suivants : 
-
-* affiliation
-	* agency (affiliation_agency)
-* document
-	* type (document_type)
-	* document (document_document)
-* equipment
-	* state (equipment_state)
-	* type (equipment_type)
-	* model (equipment_model)
-	* forbiddenequipmentmodel (equipment_forbiddenequipmentmodel)
-	* parameter (equipment_parameter)
-	* value (equipment_value)
-	* configuration (equipment_configuration)
-	* service (equipment_service)
-	* ipaddress (equipment_ipaddress)
-* intervention
-	* intervention (intervention_intervention)
-	* protagonist (intervention_protagonist)
-	* operator (intervention_operator)
-* network
-	* station (network_station)
-	* built (network_built)
-	* network (network_network)
-	* installation (network_installation)
-	* datatype (network_datatype)
-	* channel (network_channel)
-* place
-	* state (place_state)
-	* groundtype (place_groundtype)
-	* place (place_place)
-	* placeoperator (place_placeoperator)
-	* placedocument (place_placedocument)
-* project
-	* project (project_project)
 
 Ce qui donne les dépendances de module suivantes : 
 
@@ -123,7 +85,7 @@ Voici le schéma des états d'un lieu donné :
 
 Voici le schéma des états d'un équipement - validé avec Maxime : 
 
-{{./etat_equipement.png}}
+{{~/Documents/schemas/20161128-schema_etat_equipement.png}}
 
 
 ===== L'objet « Place » =====

@@ -73,7 +73,7 @@ Règles :
 
 * nouveaux IDs
 * si l'objet contient un parent, on cherche le nouveau parent et on le lie => implique que le parent est déjà crée !
-* on crée par défaut une Place du même nom qu'on lie comme étant la « main » (principale)
+* on crée par défaut une Place du même nom qu'on lie comme étant la « default » (principale)
 
 ==== Groundtype (gissmo_groundtype -> place_groundtype) ====
 
@@ -154,7 +154,7 @@ Règles :
 * stationsite.name devient station.description
 * si la station contient des "built" (des pièces ou des locals sur site), on crée un objet Place (place_place) pour chacun. On lie ensuite l'objet Place nouvellement crée avec la station.
 * si la station possède des équipements, et des interventions liées à ces équipements, on va crée un objet Place (nommé Undefined + code station) qu'on va lier à la station
-* pour chaque station on crée un built par défaut (main) avec le même nom
+* pour chaque station on crée un built par défaut (default) avec le même nom
 
 ==== Network (gissmo_network -> network_network) ====
 
