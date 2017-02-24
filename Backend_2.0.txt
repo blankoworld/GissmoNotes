@@ -79,13 +79,13 @@ L'implémentation à faire, selon moi est de pouvoir faire une liste des états 
 
 Voici le schéma des états d'un lieu donné : 
 
-{{./etat_place.png}}
+{{~/Documents/schemas/place_states_20170223.png}}
 
 ==== État des équipements ====
 
 Voici le schéma des états d'un équipement - validé avec Maxime : 
 
-{{~/Documents/schemas/20161128-schema_etat_equipement.png}}
+{{~/Documents/schemas/equipment_states_20170223.png}}
 
 
 ===== L'objet « Place » =====
