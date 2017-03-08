@@ -11,9 +11,12 @@ Temps estimé actuellement :
 
 ===== Documentation =====
 
+Dans le dossier **help**.
+
 * développeur
-* utilisateur (schéma transitions)
+* utilisateur (schéma en strate des objets utilisés pour créer une station depuis 0)
 * installation (dépendances, etc.)
+* migration depuis la 1.8
 
 ===== Tests =====
 
@@ -23,9 +26,9 @@ Temps estimé actuellement :
 
 ===== Script Migration =====
 
-* créer les nouvelles tables
-* migrer les données : storage_format + clock_drift à vérifier et migrer
-* supprimer les anciennes tables
+* FAIT | créer les nouvelles tables
+* FAIT | migrer les données : storage_format + clock_drift à vérifier et migrer
+* FAIT | supprimer les anciennes tables (scripts/migration/clean.py)
 * voir avec Maxime et Hélène si la base de données tient la route d'un point de vue plateforme instrumentale
 
 ===== Production =====
@@ -33,6 +36,20 @@ Temps estimé actuellement :
 * faire un fichier production_settings.py (qui surcharge settings.py)
 * utiliser ce fichier production_settings.py dans le script docker-entrypoint
 * vérifier que la Django Debug Toolbar n'apparaît pas
+* adapter les permissions de std_user pour accéder à : 
+	* station + builts (à l'intérieur de station)
+	* interventions
+	* equipments
+	* channels + installations
+
+===== Interface admin =====
+
+* Installation : ajouter un champ de recherche sur équipement
+* Installation : ajouter un champ de recherche sur place
+* Installation : améliorer rapidité d'affichage d'un élément (lors d'un ajout ou d'une modification par exemple)
+* Channel : améliorer rapidité d'affichage lors d'un ajout
+* Channel : champ de recherche pour Installation
+* Channel : champ de recherche pour Station
 
 ===== Idées ? =====
 
