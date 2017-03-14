@@ -17,6 +17,7 @@ Dans le dossier **help**.
 * utilisateur (schéma en strate des objets utilisés pour créer une station depuis 0)
 * installation (dépendances, etc.)
 * migration depuis la 1.8
+* TODO: supprimer graphique des états de place et d'équipements
 
 ===== Tests =====
 
@@ -41,9 +42,19 @@ Dans le dossier **help**.
 	* interventions
 	* equipments
 	* channels + installations
+* ajouter le support de Sentry à Django afin d'avoir des logs
 
 ===== Interface admin =====
 
+* Place : donner la station à laquelle elle appartient (dans network/admin.py)
+* Place (migration) : tenter de récupérer longitude, latitude et élevation du site
+* Place : afficher dans le __str__ la latitude/longitude entre parenthèses ?
+* Document : choisir par défaut l'utilisateur courant/connecté comme Owner
+* Intervention : copier le mode opératoire pour avoir l'utilisateur par défaut
+* Intervention : copier le mode opératoire pour récupérer l'agency par défaut de l'utilisateur courant
+* Intervention : ajouter une action "confirm selected interventions"
+* Intervention : ajouter une action "merge selected interventions" qui change l'historique de toutes les tables qui ont cette intervention
+* Intervention : ajouter l'historique des changements equipments, place, etc. liés à cette intervention
 * Installation : ajouter un champ de recherche sur équipement
 * Installation : ajouter un champ de recherche sur place
 * Installation : améliorer rapidité d'affichage d'un élément (lors d'un ajout ou d'une modification par exemple)
