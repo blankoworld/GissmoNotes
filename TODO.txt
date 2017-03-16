@@ -18,6 +18,7 @@ Dans le dossier **help**.
 * installation (dépendances, etc.)
 * migration depuis la 1.8
 * TODO: supprimer graphique des états de place et d'équipements
+* TODO: info à propos de l'API v2 (quelques exemples ?)
 
 ===== Tests =====
 
@@ -47,8 +48,16 @@ Dans le dossier **help**.
 ===== Interface admin =====
 
 * Place : donner la station à laquelle elle appartient (dans network/admin.py)
-* Place (migration) : tenter de récupérer longitude, latitude et élevation du site
-* Place : afficher dans le __str__ la latitude/longitude entre parenthèses ?
+* FAIT | Place (migration) : tenter de récupérer longitude, latitude et élevation du site
+* FAIT | Place : afficher dans le __str__ la latitude/longitude entre parenthèses ?
+* Model : is_network_model à rajouter sur l'interface + UN affichage sur Equipement de Service/IP (comme Gissmo 1.8)
+* Model : ajouter les paramètres disponible (en lecture seule) de ce modèle (avec un lien direct vers le paramètre) ?
+* Parameter : réduire la liste des paramètres du menu déroulant "Default"
+* Equipment : vérifier que service + IP n'apparaît QUE sur les équipements de modèle "is_network_configurable"
+* Equipment : add destination + check that you cannot add place and destination at the same time
+* Equipment : user current connected user as "Modified by"
+* Equipment : add clock_drift and clock_drift_unit, note, purchase_date, vendor, contact and storage_format
+* Equipment : Configurations doit pouvoir soit proposer un menu déroulant des possibilités, soit montrer tout en lecture seule et proposer des combinaisons possibles à rajouter
 * Document : choisir par défaut l'utilisateur courant/connecté comme Owner
 * Intervention : copier le mode opératoire pour avoir l'utilisateur par défaut
 * Intervention : copier le mode opératoire pour récupérer l'agency par défaut de l'utilisateur courant
