@@ -45,6 +45,10 @@ Dans le dossier **help**.
 	* channels + installations
 * ajouter le support de Sentry à Django afin d'avoir des logs
 
+===== API =====
+
+* [[/project]] ne fonctionne toujours pas : l'enlever ?
+
 ===== Interface admin =====
 
 * Place : donner la station à laquelle elle appartient (dans network/admin.py)
@@ -105,3 +109,4 @@ Dans le dossier **help**.
 * Faire sauter la dépendance à django-leaflet pour la version 2.0
 * Gérer les erreurs 400
 * Gérer les erreurs 500
+* Lier vendor/manufacturer à Agency via un lien ? ou les abandonner ?
