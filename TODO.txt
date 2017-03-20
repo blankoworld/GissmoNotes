@@ -35,7 +35,7 @@ Dans le dossier **help**.
 
 ===== Production =====
 
-* faire un fichier production_settings.py (qui surcharge settings.py)
+* FAIT | faire un fichier production_settings.py (qui surcharge settings.py)
 * utiliser ce fichier production_settings.py dans le script docker-entrypoint
 * vérifier que la Django Debug Toolbar n'apparaît pas
 * adapter les permissions de std_user pour accéder à : 
@@ -60,7 +60,7 @@ Dans le dossier **help**.
 * Equipment : vérifier que service + IP n'apparaît QUE sur les équipements de modèle "is_network_configurable"
 * Equipment : add destination + check that you cannot add place and destination at the same time
 * Equipment : user current connected user as "Modified by"
-* Equipment : add clock_drift and clock_drift_unit, note, purchase_date, vendor, contact and storage_format
+* FAIT | Equipment : add clock_drift and clock_drift_unit, note, purchase_date, vendor, contact and storage_format
 * Equipment : Configurations doit pouvoir soit proposer un menu déroulant des possibilités, soit montrer tout en lecture seule et proposer des combinaisons possibles à rajouter
 * Document : choisir par défaut l'utilisateur courant/connecté comme Owner
 * Intervention : copier le mode opératoire pour avoir l'utilisateur par défaut
