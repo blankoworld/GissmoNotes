@@ -13,10 +13,10 @@ Temps estimé actuellement :
 
 Dans le dossier **help**.
 
-* développeur
+* FAIT | développeur
 * utilisateur (schéma en strate des objets utilisés pour créer une station depuis 0)
-* installation (dépendances, etc.)
-* migration depuis la 1.8
+* FAIT | installation (dépendances, etc.)
+* FAIT | migration depuis la 1.8
 * TODO: supprimer graphique des états de place et d'équipements
 * TODO: info à propos de l'API v2 (quelques exemples ?)
 
@@ -36,8 +36,8 @@ Dans le dossier **help**.
 ===== Production =====
 
 * FAIT | faire un fichier production_settings.py (qui surcharge settings.py)
-* utiliser ce fichier production_settings.py dans le script docker-entrypoint
-* vérifier que la Django Debug Toolbar n'apparaît pas
+* FAIT | utiliser ce fichier production_settings.py dans le script docker-entrypoint
+* FAIT | évérifier que la Django Debug Toolbar n'apparaît pas
 * adapter les permissions de std_user pour accéder à : 
 	* station + builts (à l'intérieur de station)
 	* interventions
