@@ -37,7 +37,7 @@ Dans le dossier **help**.
 
 * FAIT | faire un fichier production_settings.py (qui surcharge settings.py)
 * FAIT | utiliser ce fichier production_settings.py dans le script docker-entrypoint
-* FAIT | évérifier que la Django Debug Toolbar n'apparaît pas
+* FAIT | évérifier que la Django Debug Toolbar n'apparaîbt pas
 * adapter les permissions de std_user pour accéder à : 
 	* station + builts (à l'intérieur de station)
 	* interventions
