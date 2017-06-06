@@ -1,0 +1,49 @@
+Content-Type: text/x-zim-wiki
+Wiki-Format: zim 0.4
+Creation-Date: 2017-06-02T13:46:14+02:00
+
+====== Stockage ======
+Created vendredi 02 juin 2017
+
+On espère utiliser [[https://docs.minio.io/|Minio]].
+
+===== Installer Minion en Docker =====
+
+Lancer : 
+
+docker pull minio/minio
+
+docker run -p 9000:9000 --name minio1 \
+  -e "MINIO_ACCESS_KEY=AKIAIOSFODNN7EXAMPLE" \
+  -e "MINIO_SECRET_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY" \
+  -v /srv/storage/gissmo:/export \
+  minio/minio server [[/export]]
+
+ATTENTION le fichier de configuration n'est pas donné, on laisse de base comme ça.
+
+Afficher les logs du Docker et noter l'adresse IP, par exemple : 
+
+Browser Access:
+   http://172.17.0.6:9000  http://127.0.0.1:9000
+
+===== Créer un bucket pour avoir une zone de stockage définie =====
+
+Ensuite : 
+
+docker pull minio/mc
+
+docker run -it --entrypoint=/bin/sh minio/mc
+
+Dans le conteneur, faire : 
+
+mc config host add minio https://172.17.0.6:9000 AKIAIOSFODNN7EXAMPLE wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+mc mb minio/piscine
+
+Ainsi, le bucket "piscine" a été crée.
+
+===== Créer un bucket façon web =====
+
+* On accède à 127.0.0.1:9000
+* On clique sur le + en bas à droite du navigateur
+* On choisit le nom du Bucket
+
